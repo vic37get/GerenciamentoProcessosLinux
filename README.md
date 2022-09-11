@@ -1,4 +1,4 @@
-# Implementação de Gerenciamento de processos no Linux :scroll:
+# Implementação de Gerenciamento de processos no Linux :scroll::closed_book:
 ## Funcionamento: 
 Aplicação que simula uma história, utilizando, pelo menos, as seguintes chamadas de sistema:
 * fork
