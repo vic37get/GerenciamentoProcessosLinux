@@ -6,6 +6,19 @@
 #include <sys/wait.h>
 #define MSGSIZE 128
 
+//Funções utilizadas:
+/*
+
+ fork OK
+ exec OK
+ clone OK
+ pipe OK
+ waitpid OK
+ exit OK
+ sigaction
+ kill OK
+
+*/
 
 
 int main(){
@@ -21,7 +34,9 @@ int main(){
     if(pipe(p2) < 0){exit(1);}
     if(pipe(p3) < 0){exit(1);}
 
+    //Narrador
     printf("\n--------JOAO I O PRIMEIRO CRIADOR DO MUNDO LINCH--------\n\n");
+
     //Inicio João
     printf("João: Sou João o criador do mundo LINCH, este é meu PID %d\n", getpid());
     sleep(tempo);
