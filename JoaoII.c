@@ -6,6 +6,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <signal.h>
 
 //Funções utilizadas:
 /*
@@ -20,6 +21,10 @@
  kill OK
 
 */
+
+static void pSigHandler(int signo){
+    printf("Pareint signum: %d", signo);
+}
 
 int Ricardo(void *arg){
     int tempo = 2;
@@ -36,6 +41,20 @@ int Ricardo(void *arg){
 
 int main(int argc, char *argv[]){
     int tempo = 2;
+    
+    struct sigaction sa;
+    sa.sa_handler = pSigHandler;
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = SA_RESTART;
+    if (sigaction(SIGCHLD, NULL, &sa) != -1){
+        if(sa.sa_handler == SIG_IGN){
+            printf("Nao consegui matá-lo\n");
+        }
+        else if(sa.sa_handler == SIG_DFL){
+            printf("Morreu!\n");
+        }
+    }
+
     
     //Narrador
     printf("\n--------JOAO II O SEGUNDO CRIADOR DO MUNDO LINCH--------\n\n");
